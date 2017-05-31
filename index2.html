@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+
+<body onload="render()">
+
+    <canvas id="green" width="600" height="315"></canvas><br></br>
+    <div style="width: 600px;">
+        <div>ขนาดตัวอักษร (ขื่อ) </div>
+        <input id="nameSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="38" oninput="render()" onchange="render()">
+        <div>ตำแหน่งชื่อ แนวนอน </div>
+        <input id="namePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="250" oninput="render()"
+            onchange="render()">
+        <div>ตำแหน่งชื่อ แนวตั้ง </div>
+        <input id="namePosotionX" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="50" oninput="render()" onchange="render()">
+    </div>
+    <img id="scream" width="220" height="277" src="welovemju.png" style="display: none;">
+</body>
+<script>
+    function render() {
+        var namePosotionY = document.getElementById('namePosotionY');
+        var namePosotionX = document.getElementById('namePosotionX');
+        var nameSize = document.getElementById('nameSize');
+        var green = document.getElementById('green');
+        var ctx = green.getContext('2d');
+        var image = new Image();
+        image.src = "welovemju.png";
+        ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, green.width, green.height);
+        ctx.fillStyle = '#fff';
+        ctx.font = nameSize.value + 'px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = 'white';  // a color name or by using rgb/rgba/hex values
+
+        ctx.fillText('จิรายุ พ. ๔๐๑', namePosotionY.value, namePosotionX.value); // text and position
+        /*
+        image.onload = function () {
+
+
+            // fiil the canvas
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, green.width, green.height);
+
+
+            // set the text
+            ctx.font = nameSize.value + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = 'white';  // a color name or by using rgb/rgba/hex values
+
+            ctx.fillText('จิรายุ พ. ๔๐๑', namePosotionY.value, namePosotionX.value); // text and position
+        };*/
+
+
+    }
+
+</script>
+
+
+</html>

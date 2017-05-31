@@ -8,24 +8,94 @@
 </head>
 
 <body onload="render()">
-    <canvas id="green" width="600" height="150"></canvas><br></br>
-    <canvas id="white" width="600" height="150"></canvas><br></br>
-    <canvas id="yellow" width="600" height="150"></canvas>
-    <div style="width: 600px;">
-        <div>ขนาดตัวอักษร (ขื่อ) </div>
-        <input id="nameSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="38" oninput="render()" onchange="render()">
-        <div>ตำแหน่งชื่อ แนวนอน </div>
-        <input id="namePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="250" oninput="render()"
-            onchange="render()">
-        <div>ตำแหน่งชื่อ แนวตั้ง </div>
-        <input id="namePosotionX" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="50" oninput="render()" onchange="render()">
-    </div>
+    <div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col text-right">
+                        <canvas id="green" width="600" height="150"></canvas><br></br>
+                        <canvas id="white" width="600" height="150"></canvas><br></br>
+                        <canvas id="yellow" width="600" height="150"></canvas><br></br>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <div style="width: 600px;">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">ข้อความ
+                                <input id="topText" class="mdl-textfield__input" value="จิรายุ พ. ๔๐๑" onkeyup="render()">
+                            </div>
+                            <div>ขนาดตัวอักษร (บน) </div>
+                            <input id="nameSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="58" oninput="render()" onchange="render()">
+                            <div>ตำแหน่งชื่อ แนวนอน </div>
+                            <input id="namePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="295" oninput="render()"
+                                onchange="render()">
+                            <div>ตำแหน่งชื่อ แนวตั้ง </div>
+                            <input id="namePosotionX" class="mdl-slider mdl-js-slider" type="range" min="0" max="130" value="60" oninput="render()" onchange="render()">
+                        </div>
+
+                        <div style="width: 600px;">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">ข้อความ
+                                <input id="midText" class="mdl-textfield__input" value="ลูกแม่โจ้ ๗๒" onkeyup="render()">
+                            </div>
+                            <div>ขนาดตัวอักษร (กลาง) </div>
+                            <input id="midleSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="58" oninput="render()" onchange="render()">
+                            <div>ตำแหน่งชื่อ แนวนอน </div>
+                            <input id="midlePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="285" oninput="render()"
+                                onchange="render()">
+                            <div>ตำแหน่งชื่อ แนวตั้ง </div>
+                            <input id="midlePosotionX" class="mdl-slider mdl-js-slider" type="range" min="45" max="130" value="76" oninput="render()"
+                                onchange="render()">
+                        </div>
+
+                        <div style="width: 600px;">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">ข้อความ
+                                <input id="bottomText" class="mdl-textfield__input" value="" onkeyup="render()">
+                            </div>
+                            <div>ขนาดตัวอักษร (ล่าง) </div>
+                            <input id="bottomSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="37" oninput="render()" onchange="render()">
+                            <div>ตำแหน่งชื่อ แนวนอน </div>
+                            <input id="bottomPosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="274" oninput="render()"
+                                onchange="render()">
+                            <div>ตำแหน่งชื่อ แนวตั้ง </div>
+                            <input id="bottomPosotionX" class="mdl-slider mdl-js-slider" type="range" min="45" max="130" value="83" oninput="render()"
+                                onchange="render()">
+                        </div>
+                        <div>
+                            <a id="download" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="background:#767980;width:20%"
+                                onclick="downloadCanvas()"><i>Download</i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="left">
+
+        </div>
+        <div class="right">
+
+        </div>
+
+
+
+        <canvas id="export" width="900" height="420" style="display: none;"></canvas>
 </body>
 <script>
     function render() {
+        var topText = document.getElementById("topText");
+        var nameSize = document.getElementById('nameSize');
         var namePosotionY = document.getElementById('namePosotionY');
         var namePosotionX = document.getElementById('namePosotionX');
-        var nameSize = document.getElementById('nameSize');
+
+        var midText = document.getElementById("midText");
+        var midleSize = document.getElementById('midleSize');
+        var midlePosotionY = document.getElementById('midlePosotionY');
+        var midlePosotionX = document.getElementById('midlePosotionX');
+
+        var bottomText = document.getElementById('bottomText');
+        var bottomSize = document.getElementById('bottomSize');
+        var bottomPosotionY = document.getElementById('bottomPosotionY');
+        var bottomPosotionX = document.getElementById('bottomPosotionX');
+
         var green = document.getElementById('green');
         var white = document.getElementById('white');
         var yellow = document.getElementById('yellow');
@@ -38,10 +108,10 @@
         ctx.fillRect(0, 0, green.width, green.height);
 
         ctxWhite.fillStyle = 'white';
-        ctxWhite.fillRect(0, 20, white.width, white.height);
+        ctxWhite.fillRect(0, 0, white.width, white.height);
 
         ctxYellow.fillStyle = 'yellow';
-        ctxYellow.fillRect(0, 10, yellow.width, yellow.height);
+        ctxYellow.fillRect(0, 0, yellow.width, yellow.height);
 
 
 
@@ -50,8 +120,38 @@
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = 'white';  // a color name or by using rgb/rgba/hex values
+        ctx.fillText(topText.value, namePosotionY.value, namePosotionX.value); // text and position
 
-        ctx.fillText('จิรายุ พ. ๔๐๑', namePosotionY.value, namePosotionX.value); // text and position
+        ctxWhite.font = midleSize.value + 'px Arial';
+        ctxWhite.textAlign = 'center';
+        ctxWhite.textBaseline = 'middle';
+        ctxWhite.fillStyle = '#006400';
+        ctxWhite.fillText(midText.value, midlePosotionY.value, midlePosotionX.value);
+
+        ctxYellow.font = bottomSize.value + 'px Arial';
+        ctxYellow.textAlign = 'center';
+        ctxYellow.textBaseline = 'middle';
+        ctxYellow.fillStyle = '#000000';
+        ctxYellow.fillText(bottomText.value, bottomPosotionY.value, bottomPosotionX.value);
+    }
+
+    function downloadCanvas() {
+        var download = document.getElementById('download');
+        var green = document.getElementById('green');
+        var white = document.getElementById('white');
+        var yellow = document.getElementById('yellow');
+        var exportCanvas = document.getElementById('export');
+
+
+
+
+        var exportContext = exportCanvas.getContext('2d');
+        exportContext.drawImage(yellow, 0, 280);
+        exportContext.drawImage(white, 0, 140);
+        exportContext.drawImage(green, 0, 0);
+        download.href = exportCanvas.toDataURL();
+        download.download = "welovemju.png";
+        //window.open(exportCanvas.toDataURL());
     }
 
 </script>
