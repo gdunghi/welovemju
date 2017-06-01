@@ -99,13 +99,13 @@
         window.addEventListener('resize', render);
         function init() {
 
-            if (detectmob()) {
+            if (true) {
                 var topSize = document.getElementById('nameSize');
                 var midleSize = document.getElementById('midleSize');
                 var bottomSize = document.getElementById('bottomSize');
 
 
-                topSize.value = 36;
+                topSize.value = 30;
                 midleSize.value = midleSize.value - (window.innerWidth * 3 / 100);
                 bottomSize.value = bottomSize.value - (window.innerWidth * 3 / 100);
 
@@ -113,8 +113,8 @@
                 var midlePosotionY = document.getElementById('midlePosotionY');
                 var bottomPosotionY = document.getElementById('bottomPosotionY');
 
-                namePosotionY.value = 197;
-                midlePosotionY.value = 192;
+                namePosotionY.value = 190;
+                midlePosotionY.value = 185;
                 bottomPosotionY.value = 72;
 
                 var downloadBtn = document.getElementById('download');
