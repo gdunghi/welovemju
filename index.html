@@ -54,7 +54,7 @@
                     <div>ขนาดตัวอักษร (บน) </div>
                     <input id="nameSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="58" oninput="render()" onchange="render()">
                     <div>ตำแหน่งชื่อ แนวนอน </div>
-                    <input id="namePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="358" oninput="render()"
+                    <input id="namePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="303" oninput="render()"
                         onchange="render()">
                     <div>ตำแหน่งชื่อ แนวตั้ง </div>
                     <input id="namePosotionX" class="mdl-slider mdl-js-slider" type="range" min="0" max="130" value="76" oninput="render()" onchange="render()">
@@ -67,7 +67,7 @@
                     <div>ขนาดตัวอักษร (กลาง) </div>
                     <input id="midleSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="58" oninput="render()" onchange="render()">
                     <div>ตำแหน่งชื่อ แนวนอน </div>
-                    <input id="midlePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="334" oninput="render()"
+                    <input id="midlePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="284" oninput="render()"
                         onchange="render()">
                     <div>ตำแหน่งชื่อ แนวตั้ง </div>
                     <input id="midlePosotionX" class="mdl-slider mdl-js-slider" type="range" min="45" max="130" value="76" oninput="render()"
@@ -143,7 +143,7 @@
 
         function render() {
             var fac = (window.innerWidth * 10 / 100);
-            var exportCanvas = document.getElementById("export");
+
             var topText = document.getElementById("topText");
             var nameSize = document.getElementById('nameSize');
             var namePosotionY = document.getElementById('namePosotionY');
@@ -168,10 +168,19 @@
             var ctxYellow = yellow.getContext('2d');
 
             //set canvas width
-            green.width = window.innerWidth - (window.innerWidth * 10 / 100);
-            white.width = window.innerWidth - (window.innerWidth * 10 / 100);
-            yellow.width = window.innerWidth - (window.innerWidth * 10 / 100);
-            exportCanvas.width = window.innerWidth - (window.innerWidth * 10 / 100);
+
+            var exportCanvas = document.getElementById("export");
+            if (detectmob()) {
+                exportCanvas.width = window.innerWidth - (window.innerWidth * 10 / 100);
+                green.width = window.innerWidth - (window.innerWidth * 10 / 100);
+                white.width = window.innerWidth - (window.innerWidth * 10 / 100);
+                yellow.width = window.innerWidth - (window.innerWidth * 10 / 100);
+            } else {
+                green.width = 600;
+                white.width = 600;
+                yellow.width = 600;
+                exportCanvas.width = 600;
+            }
 
 
             // fiil the canvas
