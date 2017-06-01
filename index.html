@@ -32,20 +32,10 @@
         ga('send', 'pageview');
     </script>
 
-    <style>
-        .element {
-            @include float-left;
-        }
-
-        .another-element {
-            @include float-right;
-        }
-    </style>
-
 
 </head>
 
-<body onload="render()">
+<body onload="init()">
     <div class="container-fluid">
         <h1>MJU Profile</h1>
         <p></p>
@@ -64,10 +54,10 @@
                     <div>ขนาดตัวอักษร (บน) </div>
                     <input id="nameSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="58" oninput="render()" onchange="render()">
                     <div>ตำแหน่งชื่อ แนวนอน </div>
-                    <input id="namePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="295" oninput="render()"
+                    <input id="namePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="358" oninput="render()"
                         onchange="render()">
                     <div>ตำแหน่งชื่อ แนวตั้ง </div>
-                    <input id="namePosotionX" class="mdl-slider mdl-js-slider" type="range" min="0" max="130" value="60" oninput="render()" onchange="render()">
+                    <input id="namePosotionX" class="mdl-slider mdl-js-slider" type="range" min="0" max="130" value="76" oninput="render()" onchange="render()">
                 </div>
 
                 <div>
@@ -77,7 +67,7 @@
                     <div>ขนาดตัวอักษร (กลาง) </div>
                     <input id="midleSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="58" oninput="render()" onchange="render()">
                     <div>ตำแหน่งชื่อ แนวนอน </div>
-                    <input id="midlePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="285" oninput="render()"
+                    <input id="midlePosotionY" class="mdl-slider mdl-js-slider" type="range" min="0" max="500" value="334" oninput="render()"
                         onchange="render()">
                     <div>ตำแหน่งชื่อ แนวตั้ง </div>
                     <input id="midlePosotionX" class="mdl-slider mdl-js-slider" type="range" min="45" max="130" value="76" oninput="render()"
@@ -98,8 +88,7 @@
                         onchange="render()">
                 </div>
                 <div style="margin-top: 30px; margin-bottom: 50px; ">
-                    <a id="download" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="background:#006400;width:20%"
-                        onclick="downloadCanvas()"><i>Download</i> </a>
+                    <a id="download" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width:20%" onclick="downloadCanvas()"><i>Download</i> </a>
                 </div>
             </div>
         </div>
@@ -108,6 +97,50 @@
 </body>
 <script>
         window.addEventListener('resize', render);
+        function init() {
+
+            if (detectmob()) {
+                var topSize = document.getElementById('nameSize');
+                var midleSize = document.getElementById('midleSize');
+                var bottomSize = document.getElementById('bottomSize');
+
+
+                topSize.value = 36;
+                midleSize.value = midleSize.value - (window.innerWidth * 3 / 100);
+                bottomSize.value = bottomSize.value - (window.innerWidth * 3 / 100);
+
+                var namePosotionY = document.getElementById('namePosotionY');
+                var midlePosotionY = document.getElementById('midlePosotionY');
+                var bottomPosotionY = document.getElementById('bottomPosotionY');
+
+                namePosotionY.value = 197;
+                midlePosotionY.value = 192;
+                bottomPosotionY.value = 72;
+
+                var downloadBtn = document.getElementById('download');
+                downloadBtn.style = "width:30%";
+
+            }
+
+            render();
+        }
+
+        function detectmob() {
+            if (navigator.userAgent.match(/Android/i)
+                || navigator.userAgent.match(/webOS/i)
+                || navigator.userAgent.match(/iPhone/i)
+                || navigator.userAgent.match(/iPad/i)
+                || navigator.userAgent.match(/iPod/i)
+                || navigator.userAgent.match(/BlackBerry/i)
+                || navigator.userAgent.match(/Windows Phone/i)
+            ) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
         function render() {
             var fac = (window.innerWidth * 10 / 100);
             var exportCanvas = document.getElementById("export");
