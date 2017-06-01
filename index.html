@@ -32,6 +32,16 @@
         ga('send', 'pageview');
     </script>
 
+    <style>
+        .element {
+            @include float-left;
+        }
+
+        .another-element {
+            @include float-right;
+        }
+    </style>
+
 
 </head>
 
@@ -40,10 +50,10 @@
         <h1>MJU Profile</h1>
         <p></p>
         <div class="row">
-            <div class="col-sm-6" style="background-color:#fff;">
-                <canvas id="green" width="600" height="150"></canvas><br></br>
-                <canvas id="white" width="600" height="150"></canvas><br></br>
-                <canvas id="yellow" width="600" height="150"></canvas><br></br>
+            <div class="col-sm-6 " style="background-color:#fff;">
+                <canvas id="green" height="150"></canvas><br></br>
+                <canvas id="white" height="150"></canvas><br></br>
+                <canvas id="yellow" height="150"></canvas><br></br>
             </div>
             <div class="col-sm-6" style="background-color:lavenderblush;">
 
@@ -97,7 +107,9 @@
     <canvas id="export" width="600" height="420" style="display: none;"></canvas>
 </body>
 <script>
+        window.addEventListener('resize', render);
         function render() {
+            var fac = (window.innerWidth * 10 / 100);
             var topText = document.getElementById("topText");
             var nameSize = document.getElementById('nameSize');
             var namePosotionY = document.getElementById('namePosotionY');
@@ -120,6 +132,13 @@
             var ctx = green.getContext('2d');
             var ctxWhite = white.getContext('2d');
             var ctxYellow = yellow.getContext('2d');
+
+            //set canvas width
+            green.width = window.innerWidth - (window.innerWidth * 10 / 100);
+            white.width = window.innerWidth - (window.innerWidth * 10 / 100);
+            yellow.width = window.innerWidth - (window.innerWidth * 10 / 100);
+
+
             // fiil the canvas
             ctx.fillStyle = '#006400';
             ctx.fillRect(0, 0, green.width, green.height);
@@ -129,6 +148,7 @@
 
             ctxYellow.fillStyle = 'yellow';
             ctxYellow.fillRect(0, 0, yellow.width, yellow.height);
+
 
 
 
