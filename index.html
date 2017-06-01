@@ -110,6 +110,7 @@
         window.addEventListener('resize', render);
         function render() {
             var fac = (window.innerWidth * 10 / 100);
+            var exportCanvas = document.getElementById("export");
             var topText = document.getElementById("topText");
             var nameSize = document.getElementById('nameSize');
             var namePosotionY = document.getElementById('namePosotionY');
@@ -137,6 +138,7 @@
             green.width = window.innerWidth - (window.innerWidth * 10 / 100);
             white.width = window.innerWidth - (window.innerWidth * 10 / 100);
             yellow.width = window.innerWidth - (window.innerWidth * 10 / 100);
+            exportCanvas.width = window.innerWidth - (window.innerWidth * 10 / 100);
 
 
             // fiil the canvas
