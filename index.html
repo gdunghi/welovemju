@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta name="google-site-verification" content="FKRaatVSB-9wikBVEFmazld5UbeYewKwmvPmNbmE-s4" />
-    <meta property="og:image" content="https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-9/18920661_10211546284406801_6247058727791902964_n.jpg?oh=35170c540b31fe501d9da002f9127bda&oe=59B18ED8" />
+    <meta property="og:image" content="https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-9/18920661_10211546284406801_6247058727791902964_n.jpg?oh=35170c540b31fe501d9da002f9127bda&oe=59B18ED8"
+    />
     <meta property="og:description" content="MJU Profile Image" />
 
-   
     <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -44,9 +44,9 @@
             </div>
             <div class="col-sm-6" style="background-color:lavenderblush;">
 
-                <div >
+                <div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">ข้อความ
-                        <textarea id="topText" class="form-control" rows="3"  value="กลิ่นศักดิ์ ม. ๔๐๑" onkeyup="render()">กลิ่นศักดิ์ ม. ร๔๐๙</textarea>
+                        <input id="topText" class="mdl-textfield__input" value="กลิ่นศักดิ์ ม. ร ๔๐๑" onkeyup="render()">
                     </div>
                     <div>ขนาดตัวอักษร (บน) </div>
                     <input id="nameSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="58" oninput="render()" onchange="render()">
@@ -57,9 +57,9 @@
                     <input id="namePosotionX" class="mdl-slider mdl-js-slider" type="range" min="0" max="130" value="60" oninput="render()" onchange="render()">
                 </div>
 
-                <div >
+                <div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">ข้อความ
-                        <textarea id="midText" class="form-control" rows="3"  onkeyup="render()">ลูกแม่โจ้ ๗๒</textarea>
+                        <input id="midText" class="mdl-textfield__input" value="ลูกแม่โจ้ ๗๒" onkeyup="render()">
                     </div>
                     <div>ขนาดตัวอักษร (กลาง) </div>
                     <input id="midleSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="58" oninput="render()" onchange="render()">
@@ -71,9 +71,9 @@
                         onchange="render()">
                 </div>
 
-                <div >
+                <div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">ข้อความ
-                        <textarea id="bottomText" class="form-control" rows="3"  value="" onkeyup="render()"></textarea>
+                        <input id="bottomText" class="mdl-textfield__input" value="" onkeyup="render()">
                     </div>
                     <div>ขนาดตัวอักษร (ล่าง) </div>
                     <input id="bottomSize" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="37" oninput="render()" onchange="render()">
@@ -140,7 +140,6 @@
             ctxWhite.textAlign = 'center';
             ctxWhite.textBaseline = 'middle';
             ctxWhite.fillStyle = '#006400';
-            alert(midText.value);
             ctxWhite.fillText(midText.value, midlePosotionY.value, midlePosotionX.value);
 
             ctxYellow.font = bottomSize.value + 'px Arial';
